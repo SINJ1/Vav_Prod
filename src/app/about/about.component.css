@@ -1,0 +1,117 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+}
+
+.full-page-image {
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Fond image */
+.about-image {
+  background-image: url('/assets/About.png');
+}
+
+/* Texte principal avec effet miroir flouté */
+.texte-reflet {
+  font-size: clamp(2rem, 4vw, 4rem); /* Responsive */
+  color: white;
+  margin-bottom: 80px;
+  font-weight: bold;
+  position: relative;
+  left: 4px;
+  bottom: 14px;
+  filter: blur(1px);
+  z-index: 1;
+}
+
+.texte-reflet::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 125%;
+  left: 0;
+  color: rgb(10, 10, 10);
+  transform: scaleY(1);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Texte avec bordure blanche (stroke) */
+.texte-border {
+  font-size: clamp(2rem, 5vw, 4rem); /* Responsive */
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  z-index: 2;
+}
+
+/* Conteneur principal du texte */
+.Vav {
+  display: flex;
+  justify-content: flex-start; /* Aligné à gauche par défaut */
+  align-items: center;
+  height: 100vh;
+  padding: 0 5%;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .Vav {
+    justify-content: center; /* Centré sur mobile */
+  }
+}
+
+.border {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: flex-start; /* Aligné à gauche par défaut */
+  align-items: center;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .border {
+    justify-content: center; /* Centré sur mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .border {
+    justify-content: center; /* Centré sur mobile */
+  }
+}
+
+/* Texte superposé pour centrage */
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
