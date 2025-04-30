@@ -19,13 +19,12 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
   projects: Project[] = [
     { title: 'Le Cinéma de la rue du Bac à Solde - Episode 5', image: 'assets/project/1.jpeg', link: 'https://www.youtube.com/watch?v=PCCx83zEns4&list=PLyJj6xkYbjteCAkSeTDPkiXm8KLmtgygB&index' },
     { title: 'Le Cinéma de la rue du Bac à Solde - Episode 9', image: 'assets/project/2.jpeg', link: 'https://www.youtube.com/watch?v=VXnsLcvMp6Y&list=PLyJj6xkYbjteCAkSeTDPkiXm8KLmtgygB&index=' },
-    { title: 'Etoiles 2 Valenciennes la 8° édition', image: 'assets/project/3.jpeg', link: 'https://www.youtube.com/watch?v=t2TvDJF7XRM&t' },
+    { title: 'Etoiles 2 Valenciennes', image: 'assets/project/3.jpeg', link: 'https://www.youtube.com/watch?v=t2TvDJF7XRM&t' },
     { title: 'ILTV - LA TELE AU COEUR DU BASSIN MINIER', image: 'assets/project/4.jpeg', link: 'https://www.facebook.com/reel/215446778094763' },
-    { title: 'Projet 5', image: 'assets/project/5.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/406285128550176/' },
-    { title: 'Projet 6', image: 'assets/project/6.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/1441270116475895/' },
-    { title: 'Générique de fin', image: 'assets/project/7.png', link: 'https://drive.google.com/file/d/1QzEws86bf5XdO2rXby77BiTAbtp0UdS4/view' },
-    { title: 'Générique de début', image: 'assets/project/8.png', link: 'https://drive.google.com/file/d/1fkK2Sl-qz27GA3GMGWlMyCXHq4bogQcD/view' },
-    { title: 'Le respect', image: 'assets/project/9.png', link: 'https://drive.google.com/file/d/1WvJkmk1tevb7bbOphnj32myqP051lmvf/view' },
+    { title: 'Qui es tu coach', image: 'assets/project/5.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/406285128550176/' },
+    { title: 'Qui es tu coach', image: 'assets/project/6.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/1441270116475895/' },
+    { title: 'Génerique destination formation', image: 'assets/project/7.png', link: 'https://drive.google.com/file/d/1QzEws86bf5XdO2rXby77BiTAbtp0UdS4/view' },
+    { title: 'Générique focus', image: 'assets/project/8.png', link: 'https://drive.google.com/file/d/1fkK2Sl-qz27GA3GMGWlMyCXHq4bogQcD/view' },
     { title: 'Travailler intelligemment', image: 'assets/project/10.png', link: 'https://drive.google.com/file/d/1QLMhVlLGln7atYKXzus_FeolMetDQI7Q/view' },
     { title: 'VIDEOCLUB - Amour plastique', image: 'assets/project/11.png', link: 'https://drive.google.com/file/d/1P7QGLcKU2iiZ-pD6DAqtNyUcTWojQ5UY/view' },
   ];

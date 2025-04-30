@@ -63,7 +63,7 @@ html, body {
 /* Conteneur principal du texte */
 .Vav {
   display: flex;
-  justify-content: flex-start; /* Aligné à gauche par défaut */
+  justify-content: space-between; /* Changed to space-between to move project card to right */
   align-items: center;
   height: 100vh;
   padding: 0 5%;
