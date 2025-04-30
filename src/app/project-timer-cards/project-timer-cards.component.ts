@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 interface Project {
   title: string;
@@ -31,17 +31,26 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
 
   currentIndex = 0;
   timer: any;
+  isBrowser = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   get currentBackground() {
     return `url(${this.projects[this.currentIndex].image})`;
   }
 
   ngOnInit(): void {
-    this.startTimer();
+    if (this.isBrowser) {
+      this.startTimer();
+    }
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timer);
+    if (this.isBrowser && this.timer) {
+      clearInterval(this.timer);
+    }
   }
 
   startTimer(): void {
@@ -55,6 +64,8 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
   }
 
   openLink(link: string): void {
-    window.open(link, '_blank');
+    if (this.isBrowser) {
+      window.open(link, '_blank');
+    }
   }
 }
