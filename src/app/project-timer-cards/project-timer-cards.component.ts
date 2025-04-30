@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { inject } from "@vercel/analytics";
 
 interface Project {
   title: string;
@@ -43,6 +44,7 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.isBrowser) {
+      inject();
       this.startTimer();
     }
   }
