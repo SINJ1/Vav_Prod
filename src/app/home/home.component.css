@@ -27,14 +27,14 @@ html, body {
   background-image: url('/assets/home.png');
 }
 
+
 .texte-reflet {
   font-size: clamp(2rem, 4vw, 4rem); /* Responsive */
   color: white;
-  margin-bottom: 80px;
   font-weight: bold;
   position: relative;
   left: 4px;
-  bottom: 14px;
+  top: 30px;
   filter: blur(1px);
   z-index: 1;
 }
@@ -52,12 +52,13 @@ html, body {
 
 /* Texte avec bordure blanche (stroke) */
 .texte-border {
-  font-size: clamp(2rem, 5vw, 4rem); /* Responsive */
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: bold;
   color: transparent;
   -webkit-text-stroke: 1px white;
-  z-index: 2;
+  z-index: 11;
 }
+
 
 /* Conteneur principal du texte */
 .Vav {
@@ -70,47 +71,21 @@ html, body {
   z-index: 2;
 }
 
+
 @media (max-width: 768px) {
-  .Vav {
-    justify-content: center; /* Centré sur mobile */
+  .border,
+  .texte-reflet,
+  .texte-border {
+    display: none;
   }
 }
 
 .border {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 5%;
-  right: 5%;
   display: flex;
-  justify-content: flex-start; /* Aligné à gauche par défaut */
-  align-items: center;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .border {
-    justify-content: center; /* Centré sur mobile */
-  }
-}
-
-@media (max-width: 768px) {
-  .border {
-    justify-content: center; /* Centré sur mobile */
-  }
-}
-
-/* Texte superposé pour centrage */
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  user-select: none;
-  pointer-events: none;
-  z-index: -1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10;
+  bottom: 30px ;
+  position: relative;
 }
