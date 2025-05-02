@@ -31,10 +31,24 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
 
   currentIndex = 0;
   timer: any;
+  progressInterval: any = null;
+  progress: number = 0;
   isBrowser = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  get previousProject(): Project {
+    return this.projects[(this.currentIndex - 1 + this.projects.length) % this.projects.length];
+  }
+
+  get currentProject(): Project {
+    return this.projects[this.currentIndex];
+  }
+
+  get nextProject(): Project {
+    return this.projects[(this.currentIndex + 1) % this.projects.length];
   }
 
   get currentBackground() {
@@ -49,19 +63,47 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.isBrowser && this.timer) {
-      clearInterval(this.timer);
-    }
+    if (this.timer) clearInterval(this.timer);
+    if (this.progressInterval) clearInterval(this.progressInterval);
   }
 
   startTimer(): void {
+    this.resetProgressBar();
+    this.startProgressBar();
     this.timer = setInterval(() => {
-      this.nextProject();
+      this.goToNextProject();
     }, 5000);
   }
 
-  nextProject(): void {
+  startProgressBar(): void {
+    this.progress = 0;
+    if (this.progressInterval) clearInterval(this.progressInterval);
+
+    this.progressInterval = setInterval(() => {
+      if (this.progress < 100) {
+        this.progress += 2; // avance de 2% toutes les 100ms → 100% en 5s
+      }
+    }, 100);
+  }
+
+  resetProgressBar(): void {
+    this.progress = 0;
+    if (this.progressInterval) {
+      clearInterval(this.progressInterval);
+      this.progressInterval = null;
+    }
+  }
+
+  goToPrevProject(): void {
+    this.currentIndex = (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+    this.resetProgressBar();
+    this.startProgressBar();
+  }
+
+  goToNextProject(): void {
     this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+    this.resetProgressBar();
+    this.startProgressBar();
   }
 
   openLink(link: string): void {

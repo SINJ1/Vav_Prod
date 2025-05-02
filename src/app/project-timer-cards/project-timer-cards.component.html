@@ -1,10 +1,35 @@
-<div class="card-container" [style.backgroundImage]="currentBackground">
-  <div class="card"
-       *ngFor="let project of projects; let i = index"
-       [class.active]="i === currentIndex"
-       (click)="openLink(project.link)">
-    <img [src]="project.image" [alt]="project.title" />
-    <h2>{{ project.title }}</h2>
-  </div>
-</div>
+<div class="slider-wrapper">
+  <!-- Flèche gauche -->
+  <div class="arrow left-arrow" (click)="goToPrevProject()">&#8678;</div>
 
+  <!-- Cartes des projets -->
+  <div class="card-container">
+
+    <!-- Carte précédente -->
+    <div class="card prev-card" *ngIf="previousProject">
+      <img [src]="previousProject.image" [alt]="previousProject.title" />
+      <h2>{{ previousProject.title }}</h2>
+    </div>
+
+    <!-- Carte actuelle -->
+    <div class="card active-card" (click)="openLink(currentProject.link)">
+      <img [src]="currentProject.image" [alt]="currentProject.title" />
+      <h2>{{ currentProject.title }}</h2>
+    </div>
+
+    <!-- Carte suivante -->
+    <div class="card next-card" *ngIf="nextProject">
+      <img [src]="nextProject.image" [alt]="nextProject.title" />
+      <h2>{{ nextProject.title }}</h2>
+    </div>
+
+    <!-- Barre de progression -->
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progress"></div>
+    </div>
+
+  </div>
+
+  <!-- Flèche droite -->
+  <div class="arrow right-arrow" (click)="goToNextProject()">&#8680;</div>
+</div>

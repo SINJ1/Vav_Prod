@@ -49,3 +49,37 @@
     z-index: 2;
   }
   
+  .arrow {
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+    padding: 0 1rem;
+    transition: transform 0.2s;
+  }
+  
+  .arrow:hover {
+    transform: scale(1.2);
+  }
+  
+  .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #ffffff;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+    
