@@ -59,7 +59,11 @@ html, body {
   -webkit-text-stroke: 1px white;
   z-index: 2;
 }
-
+.Vav h1,
+.Vav .border {
+  position: relative;
+  z-index: 10; /* 👈 AU-DESSUS DE TOUT */
+}
 /* Conteneur principal du texte */
 .Vav {
   display: flex;
@@ -71,35 +75,25 @@ html, body {
   z-index: 2;
 }
 
-@media (max-width: 768px) {
-  .Vav {
-    justify-content: center; /* Centré sur mobile */
-  }
-}
 
 .border {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 5%;
-  right: 5%;
   display: flex;
-  justify-content: flex-start; /* Aligné à gauche par défaut */
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  right: 634px;
+  align-items: flex-start; /* 👈 Bien à gauche */
   z-index: 1;
 }
 
 @media (max-width: 768px) {
-  .border {
-    justify-content: center; /* Centré sur mobile */
+  .border,
+  .texte-reflet,
+  .texte-border {
+    display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .border {
-    justify-content: center; /* Centré sur mobile */
-  }
-}
 
 /* Texte superposé pour centrage */
 .overlay-text {
