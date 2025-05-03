@@ -2,8 +2,10 @@
   <!-- Flèche gauche -->
   <div class="arrow left-arrow" (click)="goToPrevProject()">&#8678;</div>
 
-  <!-- Cartes des projets -->
-  <div class="card-container">
+  <!-- Cartes des projets avec fond dynamique -->
+  <div 
+    class="card-container" 
+    [style.background-image]="currentBackground">
 
     <!-- Carte précédente -->
     <div class="card prev-card" *ngIf="previousProject">

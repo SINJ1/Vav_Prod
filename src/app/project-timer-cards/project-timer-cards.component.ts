@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { inject } from "@vercel/analytics";
+import { inject } from '@vercel/analytics';
 
 interface Project {
   title: string;
@@ -17,23 +17,23 @@ interface Project {
 })
 export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
   projects: Project[] = [
-    { title: 'Le Cinéma de la rue du Bac à Solde - Episode 5', image: 'assets/project/1.jpeg', link: 'https://www.youtube.com/watch?v=PCCx83zEns4&list=PLyJj6xkYbjteCAkSeTDPkiXm8KLmtgygB&index' },
-    { title: 'Le Cinéma de la rue du Bac à Solde - Episode 9', image: 'assets/project/2.jpeg', link: 'https://www.youtube.com/watch?v=VXnsLcvMp6Y&list=PLyJj6xkYbjteCAkSeTDPkiXm8KLmtgygB&index=' },
-    { title: 'Etoiles 2 Valenciennes', image: 'assets/project/3.jpeg', link: 'https://www.youtube.com/watch?v=t2TvDJF7XRM&t' },
+    { title: 'Le Cinéma de la rue du Bac à Solde - Episode 5', image: 'assets/project/1.jpeg', link: 'https://www.youtube.com/watch?v=PCCx83zEns4' },
+    { title: 'Le Cinéma de la rue du Bac à Solde - Episode 9', image: 'assets/project/2.jpeg', link: 'https://www.youtube.com/watch?v=VXnsLcvMp6Y' },
+    { title: 'Etoiles 2 Valenciennes', image: 'assets/project/3.jpeg', link: 'https://www.youtube.com/watch?v=t2TvDJF7XRM' },
     { title: 'ILTV - LA TELE AU COEUR DU BASSIN MINIER', image: 'assets/project/4.jpeg', link: 'https://www.facebook.com/reel/215446778094763' },
-    { title: 'Qui es tu coach', image: 'assets/project/5.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/406285128550176/' },
-    { title: 'Qui es tu coach', image: 'assets/project/6.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/1441270116475895/' },
+    { title: 'Qui es tu coach 1', image: 'assets/project/5.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/406285128550176/' },
+    { title: 'Qui es tu coach 2', image: 'assets/project/6.jpeg', link: 'https://www.facebook.com/CrossFitLXII/videos/1441270116475895/' },
     { title: 'Génerique destination formation', image: 'assets/project/7.png', link: 'https://drive.google.com/file/d/1QzEws86bf5XdO2rXby77BiTAbtp0UdS4/view' },
     { title: 'Générique focus', image: 'assets/project/8.png', link: 'https://drive.google.com/file/d/1fkK2Sl-qz27GA3GMGWlMyCXHq4bogQcD/view' },
     { title: 'Travailler intelligemment', image: 'assets/project/10.png', link: 'https://drive.google.com/file/d/1QLMhVlLGln7atYKXzus_FeolMetDQI7Q/view' },
     { title: 'VIDEOCLUB - Amour plastique', image: 'assets/project/11.png', link: 'https://drive.google.com/file/d/1P7QGLcKU2iiZ-pD6DAqtNyUcTWojQ5UY/view' },
   ];
 
-  currentIndex = 0;
+  currentIndex: number = 0;
   timer: any;
   progressInterval: any = null;
   progress: number = 0;
-  isBrowser = false;
+  isBrowser: boolean = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -51,8 +51,9 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
     return this.projects[(this.currentIndex + 1) % this.projects.length];
   }
 
-  get currentBackground() {
-    return `url(${this.projects[this.currentIndex].image})`;
+  /** Applique dynamiquement l'image de fond */
+  get currentBackground(): string {
+    return `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(${this.currentProject.image})`;
   }
 
   ngOnInit(): void {
@@ -81,7 +82,7 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
 
     this.progressInterval = setInterval(() => {
       if (this.progress < 100) {
-        this.progress += 2; // avance de 2% toutes les 100ms → 100% en 5s
+        this.progress += 2;
       }
     }, 100);
   }
