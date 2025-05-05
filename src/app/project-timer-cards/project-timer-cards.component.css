@@ -101,3 +101,45 @@ h2 {
   width: 0%;
   transition: width 0.1s linear;
 }
+.thumbnail {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 0.75rem;
+  z-index: 10;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.thumbnail p {
+  margin: 0.5rem 0;
+  padding: 0 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.left-thumbnail {
+  left: 10px;
+}
+
+.right-thumbnail {
+  right: 10px;
+}
+
+.thumbnail:hover {
+  transform: translateY(-50%) scale(1.05);
+}
