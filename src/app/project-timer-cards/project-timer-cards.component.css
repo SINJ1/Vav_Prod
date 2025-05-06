@@ -130,11 +130,11 @@ html, body {
 }
 
 .left-arrow {
-  left: 140px; /* Aligné avec miniature */
+  left: 200px; /* Aligné avec miniature */
 }
 
 .right-arrow {
-  right: 140px; /* Aligné avec miniature */
+  right: 250px; /* Aligné avec miniature */
 }
 
 .arrow:hover {
@@ -216,7 +216,7 @@ html, body {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .border,
   .texte-reflet,
   .texte-border {
