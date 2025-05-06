@@ -1,10 +1,4 @@
 <div class="slider-wrapper">
-  <!-- Mini carte à gauche -->
-  <div class="thumbnail left-thumbnail" *ngIf="previousProject" (click)="goToPrevProject()">
-    <img [src]="previousProject.image" [alt]="previousProject.title" />
-    <p>{{ previousProject.title }}</p>
-  </div>
-
   <!-- Flèche gauche -->
   <div class="arrow left-arrow" (click)="goToPrevProject()">&#8678;</div>
 
@@ -39,10 +33,4 @@
 
   <!-- Flèche droite -->
   <div class="arrow right-arrow" (click)="goToNextProject()">&#8680;</div>
-
-  <!-- Mini carte à droite -->
-  <div class="thumbnail right-thumbnail" *ngIf="nextProject" (click)="goToNextProject()">
-    <img [src]="nextProject.image" [alt]="nextProject.title" />
-    <p>{{ nextProject.title }}</p>
-  </div>
 </div>
