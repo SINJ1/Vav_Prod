@@ -1,7 +1,4 @@
 <div class="slider-wrapper">
-  <!-- Flèche gauche -->
-  <div class="arrow left-arrow" (click)="goToPrevProject()">&#8678;</div>
-
   <!-- Cartes des projets avec fond dynamique -->
   <div 
     class="card-container" 
@@ -13,10 +10,16 @@
       <h2>{{ previousProject.title }}</h2>
     </div>
 
-    <!-- Carte actuelle -->
-    <div class="card active-card" (click)="openLink(currentProject.link)">
+    <!-- Carte actuelle avec flèches internes -->
+    <div class="card active-card">
       <img [src]="currentProject.image" [alt]="currentProject.title" />
       <h2>{{ currentProject.title }}</h2>
+
+      <!-- Flèches intégrées à la carte -->
+      <div class="card-arrows">
+        <div class="arrow-card left-arrow-card" (click)="goToPrevProject()">&#8678;</div>
+        <div class="arrow-card right-arrow-card" (click)="goToNextProject()">&#8680;</div>
+      </div>
     </div>
 
     <!-- Carte suivante -->
@@ -30,7 +33,4 @@
       <div class="progress" [style.width.%]="progress"></div>
     </div>
   </div>
-
-  <!-- Flèche droite -->
-  <div class="arrow right-arrow" (click)="goToNextProject()">&#8680;</div>
 </div>

@@ -256,3 +256,42 @@ html, body {
     align-items: center;
   }
 }
+/* Flèches intégrées à la carte */
+.card-arrows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  padding: 0 20px;
+  z-index: 5;
+}
+
+.arrow-card {
+  font-size: 2rem;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.arrow-card:hover {
+  transform: scale(1.2);
+  background-color: white;
+}
+
+/* Supprimer les anciennes flèches globales si présentes */
+.arrow.left-arrow,
+.arrow.right-arrow {
+  display: none !important;
+}
