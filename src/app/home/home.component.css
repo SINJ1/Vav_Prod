@@ -81,7 +81,7 @@ html, body {
 
   .border {
     align-items: center;          /* Centrer chaque élément de texte */
-    gap: 1rem;                    /* Espace vertical entre les éléments */
+    gap: 10px;                    /* Espace vertical entre les éléments */
   }
 }
 
