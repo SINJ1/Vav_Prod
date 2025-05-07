@@ -35,7 +35,7 @@ html, body {
   font-weight: bold;
   position: relative;
   left: 4px;
-  top: 30px;
+  top: 20px;
   filter: blur(1px);
   z-index: 1;
 }
@@ -43,7 +43,7 @@ html, body {
 .texte-reflet::after {
   content: attr(data-text);
   position: absolute;
-  top: 125%;
+  top: 150%;
   left: 0;
   color: rgb(10, 10, 10);
   transform: scaleY(1);
@@ -145,7 +145,7 @@ html, body {
 }
 
 .left-bottom-text {
-  bottom: 11%;
+  bottom: 14%;
 }
 
 .styled-line {

@@ -34,7 +34,7 @@ html, body {
   font-weight: bold;
   position: relative;
   left: 4px;
-  top: 30px;
+  top: 20px;
   filter: blur(1px);
   z-index: 1;
 }
@@ -42,7 +42,7 @@ html, body {
 .texte-reflet::after {
   content: attr(data-text);
   position: absolute;
-  top: 125%;
+  top: 150%;
   left: 0;
   color: rgb(10, 10, 10);
   transform: scaleY(1);
@@ -72,13 +72,19 @@ html, body {
 }
 
 
-@media (max-width: 768px) {
-  .border,
-  .texte-reflet,
-  .texte-border {
-    display: none;
+@media (max-width: 600px) {
+  .Vav {
+    justify-content: center;      /* Centrer horizontalement */
+    align-items: center;          /* Centrer verticalement */
+    text-align: center;           /* Centrer le texte */
+  }
+
+  .border {
+    align-items: center;          /* Centrer chaque élément de texte */
+    gap: 1rem;                    /* Espace vertical entre les éléments */
   }
 }
+
 
 .border {
   display: flex;
