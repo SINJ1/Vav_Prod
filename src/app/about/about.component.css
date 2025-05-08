@@ -72,7 +72,6 @@ html, body {
   z-index: 2;
 }
 
-
 @media (max-width: 768px) {
   .border,
   .texte-reflet,
@@ -91,6 +90,10 @@ html, body {
   position: relative;
 }
 
+.border:hover {
+  transition: 1s;
+  transform: scaleY(1.05);
+}
 
 
 /* Texte superposé pour centrage */
@@ -115,7 +118,18 @@ html, body {
   z-index: 10;
   max-width: 90%;
 }
-
+.right-text-block:hover{
+  transition: 2s;
+  transform: rotateZ(10deg);
+}
+.left-text-block {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 10;
+  max-width: 90%;
+}
 .styled-paragraph {
   font-size: clamp(1.4rem, 2.5vw, 2.2rem);
   font-weight: bold;
@@ -138,6 +152,12 @@ html, body {
   text-align: left;
   font-family: 'Special Gothic Expanded One', sans-serif;
   z-index: 10;
+}
+
+.left-top-text:hover,
+.left-bottom-text:hover {
+  transition: 2s;
+  transform: rotateZ(-10deg);
 }
 
 .left-top-text {

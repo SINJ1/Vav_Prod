@@ -68,8 +68,19 @@ html, body {
   height: 100vh;
   padding: 0 5%;
   position: relative;
-  z-index: 2;
+  animation: bounce 1s ease-in-out infinite;
 }
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-30px); }
+  40%  { transform: translateY(0); }
+  60%  { transform: translateY(-15px); }
+  80%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+
 
 
 @media (max-width: 600px) {
