@@ -107,6 +107,12 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
     this.updateBackground();
     this.resetProgressBar();
     this.startProgressBar();
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+    this.timer = setInterval(() => {
+      this.goToNextProject();
+    }, 5000);
     this.cdRef.detectChanges();
   }
 
@@ -117,6 +123,12 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
     this.updateBackground();
     this.resetProgressBar();
     this.startProgressBar();
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+    this.timer = setInterval(() => {
+      this.goToNextProject();
+    }, 5000);
     this.cdRef.detectChanges();
   }
 
