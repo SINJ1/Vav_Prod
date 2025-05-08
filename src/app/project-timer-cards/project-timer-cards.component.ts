@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { inject } from '@vercel/analytics';
+import { ChangeDetectorRef } from '@angular/core';
 
 interface Project {
   title: string;
@@ -30,12 +31,16 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
   ];
 
   currentIndex: number = 0;
+  backgroundStyle: string = '';
   timer: any;
   progressInterval: any = null;
   progress: number = 0;
   isBrowser: boolean = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private cdRef: ChangeDetectorRef
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
@@ -51,14 +56,14 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
     return this.projects[(this.currentIndex + 1) % this.projects.length];
   }
 
-  /** Applique dynamiquement l'image de fond */
-  get currentBackground(): string {
-    return `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(${this.currentProject.image})`;
+  updateBackground(): void {
+    this.backgroundStyle = `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(${this.currentProject.image})`;
   }
 
   ngOnInit(): void {
     if (this.isBrowser) {
       inject();
+      this.updateBackground();
       this.startTimer();
     }
   }
@@ -95,16 +100,24 @@ export class ProjectTimerCardsComponent implements OnInit, OnDestroy {
     }
   }
 
-  goToPrevProject(): void {
+  goToPrevProject(event?: Event): void {
+    event?.stopPropagation();
+    console.log('goToPrevProject clicked');
     this.currentIndex = (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+    this.updateBackground();
     this.resetProgressBar();
     this.startProgressBar();
+    this.cdRef.detectChanges();
   }
 
-  goToNextProject(): void {
+  goToNextProject(event?: Event): void {
+    event?.stopPropagation();
+    console.log('goToNextProject clicked');
     this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+    this.updateBackground();
     this.resetProgressBar();
     this.startProgressBar();
+    this.cdRef.detectChanges();
   }
 
   openLink(link: string): void {

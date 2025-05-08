@@ -2,7 +2,7 @@
   <!-- Cartes des projets avec fond dynamique -->
   <div 
     class="card-container" 
-    [style.background-image]="currentBackground">
+    [style.background-image]="backgroundStyle">
 
     <!-- Carte précédente -->
     <div class="card prev-card" *ngIf="previousProject">
@@ -10,22 +10,22 @@
       <h2>{{ previousProject.title }}</h2>
     </div>
 
-    <!-- Carte actuelle avec flèches internes -->
-    <div class="card active-card">
+    <!-- Carte actuelle CLIQUABLE -->
+    <div class="card active-card" (click)="openLink(currentProject.link)">
       <img [src]="currentProject.image" [alt]="currentProject.title" />
       <h2>{{ currentProject.title }}</h2>
-
-      <!-- Flèches intégrées à la carte -->
-      <div class="card-arrows">
-        <div class="arrow-card left-arrow-card" (click)="goToPrevProject()">&#8678;</div>
-        <div class="arrow-card right-arrow-card" (click)="goToNextProject()">&#8680;</div>
-      </div>
     </div>
 
     <!-- Carte suivante -->
     <div class="card next-card" *ngIf="nextProject">
       <img [src]="nextProject.image" [alt]="nextProject.title" />
       <h2>{{ nextProject.title }}</h2>
+    </div>
+
+    <!-- Flèches SOUS la carte -->
+    <div class="bottom-arrows">
+      <div class="arrow-card left-arrow-card" (click)="goToPrevProject($event)">&#8678;</div>
+      <div class="arrow-card right-arrow-card" (click)="goToNextProject($event)">&#8680;</div>
     </div>
 
     <!-- Barre de progression -->
